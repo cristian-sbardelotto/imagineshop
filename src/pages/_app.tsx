@@ -3,6 +3,7 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import Layout from '@/components/Layout';
 config.autoAddCss = false;
 
 const GlobalStyle = createGlobalStyle`
@@ -33,7 +34,9 @@ function App({ Component, pageProps }: AppProps) {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </>
   );

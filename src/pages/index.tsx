@@ -1,11 +1,7 @@
-import Header from '../components/Header/index';
-import Footer from '../components/Footer/index';
-
 const Home = () => {
   return (
     <>
-      <Header />
-      <Footer />
+      <h1>Home works</h1>
     </>
   );
 };
