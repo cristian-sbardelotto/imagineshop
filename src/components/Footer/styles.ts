@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Container } from '@/styles/utils';
 
 export const StyledFooter = styled.footer`
-  width: 100vw;
   height: 12.5rem;
 
   background-color: #f4f4f4;
