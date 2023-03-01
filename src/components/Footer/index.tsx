@@ -1,3 +1,4 @@
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebookSquare,
@@ -14,7 +15,7 @@ import {
   StyledFooter,
 } from './styles';
 
-import logo from '../../assets/logo.png';
+import logo from '../../../public/images/logo.png';
 import Image from 'next/image';
 
 const Footer = () => {
@@ -24,7 +25,7 @@ const Footer = () => {
         <div>
           <Image src={logo} alt='ImagineSchool Logo' width={130} height={60} />
         </div>
-        
+
         <Contact>
           Imagine Shop - +55 (48) 3771 - 1703 3771 - 1823-
           imagine@imagineschool.com.br - Rua Miguel Daux, 129, Coqueiros -

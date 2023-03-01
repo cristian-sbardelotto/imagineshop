@@ -1,10 +1,11 @@
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { MenuItem, MenuList, Navbar, StyledHeader } from './styles';
 
-import logo from '../../assets/logo.png';
-import shoppingCart from '../../assets/carrinho.png';
+import logo from '../../../public/images/logo.png';
+import shoppingCart from '../../../public/images/carrinho.png';
 
 const Header = () => {
   return (
