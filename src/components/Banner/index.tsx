@@ -13,7 +13,13 @@ interface BannerProps {
 const Banner = ({ image , width, height }: BannerProps) => {
   return (
     <BannerContainer>
-      <Image src={image} alt='Banner Image' width={width} height={height} />
+      <Image
+        src={image}
+        alt='Banner Image'
+        width={width}
+        height={height}
+        priority={true}
+      />
     </BannerContainer>
   );
 };
