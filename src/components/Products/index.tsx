@@ -13,11 +13,16 @@ import {
 } from './styles';
 
 interface Product {
+  __id: number;
   name: string;
+  image: string;
+  price: number;
+  formattedPrice: number;
+  splitPrice: number;
 }
 
 interface ProductsProps {
-  products: unknown[];
+  products: Product[];
 }
 
 const Products = ({ products }: ProductsProps) => {
@@ -28,21 +33,25 @@ const Products = ({ products }: ProductsProps) => {
       </Title>
 
       <ProductList>
-        <ProductItem>
-          <Link href='/'>
-            <Image src='' alt='asdasd' width={230} height={230} />
-            <ProductName>Nome</ProductName>
-            <ProductPrice>preco</ProductPrice>
-            <ProductSplitPrice>preco parcelado</ProductSplitPrice>
-          </Link>
-        </ProductItem>
-        <ProductItem>b</ProductItem>
-        <ProductItem>c</ProductItem>
-        <ProductItem>d</ProductItem>
-        <ProductItem>e</ProductItem>
-        <ProductItem>f</ProductItem>
-        <ProductItem>g</ProductItem>
-        <ProductItem>h</ProductItem>
+        {products &&
+          products.map(product => (
+            <ProductItem key={product.__id}>
+              <Link href='/home'>
+                <Image
+                  src={product.image}
+                  alt='Product image'
+                  width={230}
+                  height={230}
+                />
+              </Link>
+
+              <ProductName>{product.name}</ProductName>
+              <ProductPrice>{product.formattedPrice}</ProductPrice>
+              <ProductSplitPrice>
+                10x de {product.splitPrice} sem juros
+              </ProductSplitPrice>
+            </ProductItem>
+          ))}
       </ProductList>
     </ProductContainer>
   );
