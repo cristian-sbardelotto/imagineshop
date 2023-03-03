@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import React from 'react';
 
 import {
@@ -15,10 +15,11 @@ import {
 interface Product {
   __id: number;
   name: string;
-  image: string;
-  price: number;
-  formattedPrice: number;
-  splitPrice: number;
+  image: StaticImageData;
+  price: string;
+  formattedPrice: string;
+  splitPrice: string;
+  times: number | string;
 }
 
 interface ProductsProps {
@@ -36,7 +37,7 @@ const Products = ({ products }: ProductsProps) => {
         {products &&
           products.map(product => (
             <ProductItem key={product.__id}>
-              <Link href='/home'>
+              <Link href='/'>
                 <Image
                   src={product.image}
                   alt='Product image'
@@ -48,7 +49,7 @@ const Products = ({ products }: ProductsProps) => {
               <ProductName>{product.name}</ProductName>
               <ProductPrice>{product.formattedPrice}</ProductPrice>
               <ProductSplitPrice>
-                10x de {product.splitPrice} sem juros
+                {product.times} de R$ {product.splitPrice} sem juros
               </ProductSplitPrice>
             </ProductItem>
           ))}

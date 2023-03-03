@@ -37,8 +37,16 @@ export const ProductItem = styled.div`
 
   transition: 0.2s all ease;
 
+  & * {
+    transition: 0.2s all ease;
+  }
+
   &:hover {
     box-shadow: 5px 10px 10px #d9d9d9;
+
+    img {
+      scale: 1.1;
+    }
 
     p {
       color: ${({ theme }) => theme.colors.primary};
@@ -53,15 +61,11 @@ export const ProductItem = styled.div`
 
 export const ProductName = styled.p`
   font-size: 0.875rem;
-
-  transition: 0.2s all ease;
 `;
 
 export const ProductPrice = styled.p`
   font-size: 1.125rem;
   font-weight: 700;
-
-  transition: 0.2s all ease;
 `;
 
 export const ProductSplitPrice = styled.small`
