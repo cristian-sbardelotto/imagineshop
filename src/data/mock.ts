@@ -15,16 +15,16 @@ export const productsList = [
     price: '1299',
     formattedPrice: '32.5',
     splitPrice: '129.9',
-    times: '10'
+    times: '10',
   },
   {
     __id: 2,
     name: 'Smart TV LED 55" Samsung Ultra HD 4k 55NU7100',
     image: image2,
-    price:' 2944.99',
+    price: ' 2944.99',
     formattedPrice: '32.5',
     splitPrice: '129.9',
-    times: '10'
+    times: '10',
   },
   {
     __id: 3,
@@ -33,7 +33,7 @@ export const productsList = [
     price: '2699.99',
     formattedPrice: '32.5',
     splitPrice: '299.99',
-    times: '10'
+    times: '10',
   },
   {
     __id: 4,
@@ -41,8 +41,8 @@ export const productsList = [
     image: image4,
     price: '2949.9',
     formattedPrice: '32.5',
-    splitPrice:' 294.99',
-    times: '10'
+    splitPrice: ' 294.99',
+    times: '10',
   },
   {
     __id: 5,
@@ -51,7 +51,7 @@ export const productsList = [
     price: '3299',
     formattedPrice: '634',
     splitPrice: '329.9',
-    times: '10'
+    times: '10',
   },
   {
     __id: 6,
@@ -60,7 +60,7 @@ export const productsList = [
     price: '139.99',
     formattedPrice: '32.5',
     splitPrice: '23.33',
-    times: '6'
+    times: '6',
   },
   {
     __id: 7,
@@ -69,7 +69,7 @@ export const productsList = [
     price: '5999.99',
     formattedPrice: '32.5',
     splitPrice: '599.99',
-    times: '10'
+    times: '10',
   },
   {
     __id: 8,
@@ -78,6 +78,21 @@ export const productsList = [
     price: '1899',
     formattedPrice: '32.5',
     splitPrice: '271.28',
-    times: '7'
+    times: '7',
   },
 ];
+
+// Formatting the data
+productsList.forEach(product => {
+  product.formattedPrice = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  }).format(Number(product.price));
+
+  product.splitPrice = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  }).format(Number(product.price) / 10);
+
+  product.times = `${product.times}x`;
+});

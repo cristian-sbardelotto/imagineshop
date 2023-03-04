@@ -8,20 +8,6 @@ import Products from '@/components/Products';
 
 import { productsList } from '@/data/mock';
 
-productsList.forEach(product => {
-  product.formattedPrice = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  }).format(Number(product.price));
-
-  product.splitPrice = new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  }).format(Number(product.price) / 10);
-
-  product.times = `${product.times}x`;
-});
-
 const Home = () => {
   return (
     <Main>
