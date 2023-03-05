@@ -20,6 +20,7 @@ interface Product {
   formattedPrice: string;
   splitPrice: string;
   times: number | string;
+  description: string;
 }
 
 interface ProductsProps {
@@ -37,16 +38,16 @@ const Products = ({ products }: ProductsProps) => {
         {products &&
           products.map(product => (
             <ProductItem key={product.__id}>
-              <Link href='/'>
+              <Link href={`/products/${product.__id}`}>
                 <Image
                   src={product.image}
                   alt='Product image'
                   width={230}
                   height={230}
                 />
+                <ProductName>{product.name}</ProductName>
               </Link>
 
-              <ProductName>{product.name}</ProductName>
               <ProductPrice>{product.formattedPrice}</ProductPrice>
               <ProductSplitPrice>
                 {product.times} de R$ {product.splitPrice} sem juros

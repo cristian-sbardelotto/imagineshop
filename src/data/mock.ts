@@ -16,6 +16,8 @@ export const productsList = [
     formattedPrice: '32.5',
     splitPrice: '129.9',
     times: '10',
+    description:
+      'O Galaxy J8 oferece uma ótima reprodução de cores e contrastes profundos, para que o usuário tenha uma experiência única de visualização, além de contar com fotos nítidas ao dia e a noite, e um leitor de impressão digital, que permite fácil acesso a sites e aplicativos para execução de multitarefas com perfeição.',
   },
   {
     __id: 2,
@@ -25,6 +27,8 @@ export const productsList = [
     formattedPrice: '32.5',
     splitPrice: '129.9',
     times: '10',
+    description:
+      'O Smart TV LED 55" Samsung Ultra HD 4K é uma excelente escolha para quem procura uma TV de alta qualidade com recursos inteligentes. Assim, este modelo oferece uma imagem de qualidade 4K, com quatro vezes mais detalhes do que uma TV Full HD padrão. Além disso, a tecnologia LED proporciona uma melhor reprodução de cores e um contraste mais nítido.',
   },
   {
     __id: 3,
@@ -34,6 +38,8 @@ export const productsList = [
     formattedPrice: '32.5',
     splitPrice: '299.99',
     times: '10',
+    description:
+      'O Samsung Expert é o notebook voltado para pessoas dinâmicas que buscam um computador que ofereça alto desempenho aliado a um design moderno e elegante, e que conta com avançadas características de segurança. A placa de vídeo NVIDIA GeForce oferece alto desempenho gráfico para aplicações como jogos e softwares 3D.',
   },
   {
     __id: 4,
@@ -43,6 +49,8 @@ export const productsList = [
     formattedPrice: '32.5',
     splitPrice: ' 294.99',
     times: '10',
+    description:
+      'A Lava e Seca Samsung 11kg com 12 programas de lavagem é uma opção conveniente para quem precisa de uma máquina que combine as funções de lavar e secar roupas em um único equipamento. Com capacidade de lavagem de até 11kg, essa máquina é ideal para famílias de tamanho médio.',
   },
   {
     __id: 5,
@@ -52,6 +60,8 @@ export const productsList = [
     formattedPrice: '634',
     splitPrice: '329.9',
     times: '10',
+    description:
+      'O iPhone 7 Plus 32GB Ouro Rosa é um smartphone de alta qualidade da Apple, que oferece uma tela Retina HD de 5,5 polegadas, proporcionando uma excelente experiência de visualização. Com uma resolução de 1920x1080 pixels, a tela oferece uma imagem nítida e vibrante, com excelente reprodução de cores.',
   },
   {
     __id: 6,
@@ -61,6 +71,8 @@ export const productsList = [
     formattedPrice: '32.5',
     splitPrice: '23.33',
     times: '6',
+    description:
+      'O Liquidificador Philips Walita Problend Preto RI2134/9 é um equipamento de alta qualidade para preparar bebidas, sopas, cremes e outros alimentos. Com motor potente de 600 watts e lâminas ProBlend 4, ele é capaz de triturar e misturar alimentos com eficiência, garantindo uma textura suave e homogênea.',
   },
   {
     __id: 7,
@@ -70,6 +82,8 @@ export const productsList = [
     formattedPrice: '32.5',
     splitPrice: '599.99',
     times: '10',
+    description:
+      'O Monitor Gamer LED 49" Curvo 1ms 144hz Double Full HD é uma excelente escolha para quem busca um monitor de alta qualidade para jogos e outras atividades que exigem alta performance. Com uma tela curva de 49 polegadas, ele oferece uma experiência imersiva e envolvente, proporcionando maior conforto visual durante longas sessões de uso.',
   },
   {
     __id: 8,
@@ -79,6 +93,8 @@ export const productsList = [
     formattedPrice: '32.5',
     splitPrice: '271.28',
     times: '7',
+    description:
+      'O PC Gamer EasyPC FPS Intel Core i3 8GB 1TB é uma excelente opção para quem deseja um computador com alto desempenho para jogos. Equipado com processador Intel Core i3, 8GB de memória RAM e 1TB de armazenamento, ele oferece excelente desempenho em jogos e outras atividades que exigem um processamento mais intenso.',
   },
 ];
 
