@@ -29,7 +29,7 @@ export const ProductItem = styled.div`
   height: 23.125rem;
   padding: 1rem;
 
-  border: 1px solid #eaeaea;
+  border: 1px solid ${({ theme }) => theme.colors.tertiary};
   border-radius: 4px;
   box-shadow: 5px 0px 10px #d9d9d9;
 
