@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Image, { StaticImageData } from 'next/image';
 import React from 'react';
 
+import { IProduct } from '@/types';
+
 import {
   ProductContainer,
   ProductItem,
@@ -12,19 +14,8 @@ import {
   Title,
 } from './styles';
 
-interface Product {
-  __id: number;
-  name: string;
-  image: StaticImageData;
-  price: string;
-  formattedPrice: string;
-  splitPrice: string;
-  times: number | string;
-  description: string;
-}
-
 interface ProductsProps {
-  products: Product[];
+  products: IProduct[];
 }
 
 const Products = ({ products }: ProductsProps) => {
