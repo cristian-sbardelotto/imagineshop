@@ -4,7 +4,10 @@ import { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+
 import Layout from '@/components/Layout';
+import ShoppingCartProvider from '@/contexts/ShoppingCartContext';
+
 config.autoAddCss = false;
 
 const GlobalStyle = createGlobalStyle`
@@ -33,10 +36,12 @@ function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ShoppingCartProvider>
+          <GlobalStyle />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ShoppingCartProvider>
       </ThemeProvider>
     </>
   );

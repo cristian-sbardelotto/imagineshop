@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 
 import { productsList } from '@/data/mock';
-import { Container } from '@/styles/utils';
+
+import styled from 'styled-components';
 
 import Banner from '@/components/Banner';
 import bannerImage from '../../../public/images/BANNER 02.png';
+import { Container } from '@/styles/utils';
 
-import styled from 'styled-components';
-import Image from 'next/image';
+import { IProduct } from '@/types';
+
+import { ShoppingCartContext } from '@/contexts/ShoppingCartContext';
+import Link from 'next/link';
 
 const ProductId = () => {
   const router = useRouter();
@@ -19,6 +24,12 @@ const ProductId = () => {
   }
 
   const productData = productsList[productId - 1];
+
+  const { addProduct } = useContext(ShoppingCartContext);
+
+  const addProductInShoppingCart = (product: IProduct) => {
+    addProduct(product);
+  };
 
   return (
     <ProductContainer>
@@ -42,7 +53,11 @@ const ProductId = () => {
             {productData.times} de {productData.splitPrice}
           </ProductSplitPrice>
 
-          <Button>Adicionar ao carrinho</Button>
+          <Link href='/shopping-cart' style={{ textDecoration: 'none' }}>
+            <Button onClick={() => addProductInShoppingCart(productData)}>
+              Adicionar ao carrinho
+            </Button>
+          </Link>
 
           <ProductDescription>{productData.description}</ProductDescription>
         </div>
@@ -124,6 +139,10 @@ const Button = styled.button`
   border-radius: 4px;
 
   cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.85);
+  }
 `;
 
 const ProductDescription = styled.small`
