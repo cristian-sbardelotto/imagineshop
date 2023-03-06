@@ -13,7 +13,6 @@ import { Container } from '@/styles/utils';
 import { IProduct } from '@/types';
 
 import { ShoppingCartContext } from '@/contexts/ShoppingCartContext';
-import Link from 'next/link';
 
 const ProductId = () => {
   const router = useRouter();
@@ -53,11 +52,9 @@ const ProductId = () => {
             {productData.times} de {productData.splitPrice}
           </ProductSplitPrice>
 
-          <Link href='/shopping-cart' style={{ textDecoration: 'none' }}>
-            <Button onClick={() => addProductInShoppingCart(productData)}>
-              Adicionar ao carrinho
-            </Button>
-          </Link>
+          <Button onClick={() => addProductInShoppingCart(productData)}>
+            Adicionar ao carrinho
+          </Button>
 
           <ProductDescription>{productData.description}</ProductDescription>
         </div>
