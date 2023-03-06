@@ -1,5 +1,5 @@
 import { IProduct } from '@/types';
-import React, { createContext } from 'react';
+import React, { createContext, PropsWithChildren } from 'react';
 
 interface ShoppingCart {
   addProduct: (product: IProduct) => void;
@@ -8,7 +8,7 @@ interface ShoppingCart {
 
 export const ShoppingCartContext = createContext({} as ShoppingCart);
 
-const ShoppingCartProvider = ({ children }: never) => {
+const ShoppingCartProvider = ({ children }: PropsWithChildren) => {
   const isBrowser = typeof window !== 'undefined';
 
   const SESSION_STORAGE = 'products';

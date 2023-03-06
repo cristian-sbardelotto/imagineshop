@@ -37,10 +37,12 @@ function App({ Component, pageProps }: AppProps) {
     <>
       <ThemeProvider theme={theme}>
         <ShoppingCartProvider>
-          <GlobalStyle />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <>
+            <GlobalStyle />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </>
         </ShoppingCartProvider>
       </ThemeProvider>
     </>
