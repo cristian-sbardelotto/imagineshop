@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import React from 'react';
 
 import { IProduct } from '@/types';
