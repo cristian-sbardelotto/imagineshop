@@ -4,17 +4,26 @@ import React, { createContext, PropsWithChildren } from 'react';
 interface ShoppingCart {
   addProduct: (product: IProduct) => void;
   getProducts: () => IProduct[];
+  deleteProduct: (id: number) => void;
+  getTotalValue: () => string;
+  getTotalProducts: () => string;
+  getShippingValue: () => string;
+
 }
 
 export const ShoppingCartContext = createContext({} as ShoppingCart);
 
 const ShoppingCartProvider = ({ children }: PropsWithChildren) => {
   const isBrowser = typeof window !== 'undefined';
-
   const SESSION_STORAGE = 'products';
+  const ShippingValue = '100';
 
   const addProduct = (product: IProduct) => {
     const products = getProducts();
+    const findProduct = products.find(prod => prod.__id == prod.__id);
+
+    if (findProduct) return;
+    
     products.push(product);
 
     if (isBrowser) {
@@ -22,7 +31,7 @@ const ShoppingCartProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const getProducts = () => {
+  const getProducts = (): IProduct[] => {
     if (isBrowser) {
       const products = sessionStorage.getItem(SESSION_STORAGE);
       return products ? JSON.parse(products) : [];
@@ -31,8 +40,43 @@ const ShoppingCartProvider = ({ children }: PropsWithChildren) => {
     return [];
   };
 
+  const deleteProduct = (id: number): void => {
+    const products = getProducts();
+    const newProducts = products.filter(product => product.__id != id );
+
+    if (isBrowser) {
+      sessionStorage.setItem(SESSION_STORAGE, JSON.stringify(newProducts));
+    }
+  };
+
+  const getTotalProducts = (): string => {
+    const products = getProducts();
+    const total = products.reduce((acc, cur) => Number(acc) + Number(cur.price), 0);
+    return (new Intl.NumberFormat('pt-BR', { style: 'currency',currency: 'BRL', }).format(Number(total)));
+  };
+
+  const getTotalValue = (): string => {
+    const products = getProducts();
+    const total = products.reduce((acc, cur) => Number(acc) + Number(cur.price), 0);
+    return (new Intl.NumberFormat('pt-BR', { style: 'currency',currency: 'BRL', }).format(Number(total + ShippingValue)));
+  };
+
+  const getShippingValue = (): string => {
+    return (new Intl.NumberFormat('pt-BR', { style: 'currency',currency: 'BRL', }).format(Number(ShippingValue)));
+  };
+
+
   return (
-    <ShoppingCartContext.Provider value={{ addProduct, getProducts }}>
+    <ShoppingCartContext.Provider
+      value={{
+        addProduct,
+        getProducts,
+        deleteProduct,
+        getTotalValue,
+        getTotalProducts,
+        getShippingValue
+      }}
+    >
       {children}
     </ShoppingCartContext.Provider>
   );

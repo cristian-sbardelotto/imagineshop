@@ -10,13 +10,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 
 const ShoppingCart = () => {
-  const { getProducts } = useContext(ShoppingCartContext);
+  const { getProducts, deleteProduct, getTotalValue, getTotalProducts, getShippingValue } =
+    useContext(ShoppingCartContext);
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [refresh, setRefresh] = useState<number>(0);
 
   useEffect(() => {
     const values = getProducts();
     setProducts(values);
-  }, []);
+  }, [refresh]);
 
   const isPlural = () => {
     // checks if the products in the shopping cart are in the plural
@@ -25,6 +27,11 @@ const ShoppingCart = () => {
     }
 
     return 'produto';
+  };
+
+  const handleDeleteProduct = (id: number) => {
+    deleteProduct(id);
+    setRefresh(oldValue => oldValue + 1);
   };
 
   return products && products.length > 0 ? (
@@ -41,7 +48,7 @@ const ShoppingCart = () => {
             products.map((product, index) => (
               <div key={index}>
                 <ButtonContainer>
-                  <button>
+                  <button onClick={() => handleDeleteProduct(product.__id)}>
                     <DeleteIcon icon={faX} />
                   </button>
                 </ButtonContainer>
@@ -73,15 +80,15 @@ const ShoppingCart = () => {
               <span>
                 {products.length} {isPlural()}
               </span>{' '}
-              <span>R$ 0.000</span>
+              <span>{getTotalProducts()}</span>
             </PaymentValue>
 
             <PaymentShipping>
-              <span>Frete</span> <span>R$ 0.000</span>
+              <span>Frete</span> <span>{getShippingValue()}</span>
             </PaymentShipping>
 
             <PaymentTotal>
-              <span>Total</span> <span>R$ 0.000</span>
+              <span>Total</span> <span>{getTotalValue()}</span>
             </PaymentTotal>
 
             <Separator />
