@@ -6,6 +6,9 @@ import { productsList } from '@/data/mock';
 
 import styled from 'styled-components';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Banner from '@/components/Banner';
 import bannerImage from '../../../public/images/BANNER 02.png';
 import { Container } from '@/styles/utils';
@@ -27,56 +30,69 @@ const ProductId = () => {
   const { addProduct } = useContext(ShoppingCartContext);
 
   const addProductInShoppingCart = (product: IProduct) => {
+    toast.success('Produto adicionado no carrinho!', {
+      position: 'bottom-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
     addProduct(product);
   };
 
   return (
-    <ProductContainer>
-      <Banner image={bannerImage} width={1140} height={145} />
-      <ProductDetail>
-        <ImageContainer>
-          <Image
-            src={productData.image}
-            alt='Product Image'
-            width={200}
-            height={200}
-          />
-        </ImageContainer>
+    <>
+      <ProductContainer>
+        <Banner image={bannerImage} width={1140} height={145} />
+        <ProductDetail>
+          <ImageContainer>
+            <Image
+              src={productData.image}
+              alt='Product Image'
+              width={200}
+              height={200}
+            />
+          </ImageContainer>
+
+          <div>
+            <ProductName>{productData.name}</ProductName>
+
+            <ProductPrice>{productData.formattedPrice}</ProductPrice>
+
+            <ProductSplitPrice>
+              {productData.times} de {productData.splitPrice}
+            </ProductSplitPrice>
+
+            <Button onClick={() => addProductInShoppingCart(productData)}>
+              Adicionar ao carrinho
+            </Button>
+
+            <ProductDescription>{productData.description}</ProductDescription>
+          </div>
+
+          <SummaryTitle>
+            <span>Inf</span>ormações do Produto
+          </SummaryTitle>
+        </ProductDetail>
 
         <div>
-          <ProductName>{productData.name}</ProductName>
+          {productData.description}
 
-          <ProductPrice>{productData.formattedPrice}</ProductPrice>
+          <p>Imagens Meramente Ilustrativas.</p>
 
-          <ProductSplitPrice>
-            {productData.times} de {productData.splitPrice}
-          </ProductSplitPrice>
-
-          <Button onClick={() => addProductInShoppingCart(productData)}>
-            Adicionar ao carrinho
-          </Button>
-
-          <ProductDescription>{productData.description}</ProductDescription>
+          <p>
+            Todas as Informações divulgadas são de responsabilidade do
+            Fabricante/Fornecedor. Verifique com os fabricantes do produto e de
+            seus componentes eventuais limitações à utilização de todos os
+            recursos e funcionalidades.
+          </p>
         </div>
-
-        <SummaryTitle>
-          <span>Inf</span>ormações do Produto
-        </SummaryTitle>
-      </ProductDetail>
-
-      <div>
-        {productData.description}
-
-        <p>Imagens Meramente Ilustrativas.</p>
-
-        <p>
-          Todas as Informações divulgadas são de responsabilidade do
-          Fabricante/Fornecedor. Verifique com os fabricantes do produto e de
-          seus componentes eventuais limitações à utilização de todos os
-          recursos e funcionalidades.
-        </p>
-      </div>
-    </ProductContainer>
+      </ProductContainer>
+      <ToastContainer />
+    </>
   );
 };
 
