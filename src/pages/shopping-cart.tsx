@@ -16,7 +16,7 @@ const ShoppingCart = () => {
     getTotalValue,
     getTotalProducts,
     getShippingValue,
-    deleteAllProducts
+    deleteAllProducts,
   } = useContext(ShoppingCartContext);
   const [products, setProducts] = useState<IProduct[]>([]);
   const [refresh, setRefresh] = useState<number>(0);
@@ -47,12 +47,17 @@ const ShoppingCart = () => {
     setRefresh(oldValue => oldValue + 1);
   };
 
-
   return products && products.length > 0 ? (
     <Main>
       <Title>Meu carrinho</Title>
 
-      <SubTitle>Produtos</SubTitle>
+      <SubTitleGroup>
+        <SubTitle>Produtos</SubTitle>
+
+        <RemoveButton onClick={() => handleDeleteAllProducts()}>
+          excluir todos produtos
+        </RemoveButton>
+      </SubTitleGroup>
 
       <ShoppingCartContainer>
         <ShoppingCartProducts>
@@ -127,18 +132,15 @@ const ShoppingCart = () => {
               />
             </InputGroup>
 
-            <Button>
-              Continuar
-            </Button>
+            <Button>Continuar</Button>
           </ShoppingCartPayment>
-
-          <button onClick={() => handleDeleteAllProducts()}>Excluir todos produtos</button>
         </section>
       </ShoppingCartContainer>
     </Main>
   ) : (
     <Main>
-      <Title>nao tem produto</Title>
+      <Title>Meu carrinho</Title>
+      <Title>Você não tem nenhum produto</Title>
     </Main>
   );
 };
@@ -154,11 +156,39 @@ const Title = styled.p`
   font-weight: 700;
 `;
 
+const SubTitleGroup = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+
+`;
+
 const SubTitle = styled.p`
   margin: 0 0 1rem 0;
+  display: inline;
 
   font-size: 1rem;
   font-weight: 700;
+`;
+
+const RemoveButton = styled.button`
+  padding: 0.75rem;
+
+  border: unset;
+  border-radius: 6px;
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.3rem;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.85);
+  }
 `;
 
 const ShoppingCartContainer = styled.div`

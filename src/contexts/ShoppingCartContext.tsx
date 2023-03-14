@@ -40,7 +40,6 @@ const ShoppingCartProvider = ({ children }: PropsWithChildren) => {
   const deleteProduct = (id: number): void => {
     const products = getProducts();
     const newProducts = products.filter(product => product.__id != id);
-    console.log(newProducts);
 
     if (isBrowser) {
       sessionStorage.setItem(SESSION_STORAGE, JSON.stringify(newProducts));
