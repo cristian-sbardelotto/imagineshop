@@ -8,7 +8,7 @@ interface ShoppingCart {
   getTotalValue: () => string;
   getTotalProducts: () => string;
   getShippingValue: () => string;
-
+  deleteAllProducts: () => void;
 }
 
 export const ShoppingCartContext = createContext({} as ShoppingCart);
@@ -20,10 +20,7 @@ const ShoppingCartProvider = ({ children }: PropsWithChildren) => {
 
   const addProduct = (product: IProduct) => {
     const products = getProducts();
-    const findProduct = products.find(prod => prod.__id == prod.__id);
 
-    if (findProduct) return;
-    
     products.push(product);
 
     if (isBrowser) {
@@ -42,12 +39,15 @@ const ShoppingCartProvider = ({ children }: PropsWithChildren) => {
 
   const deleteProduct = (id: number): void => {
     const products = getProducts();
-    const newProducts = products.filter(product => product.__id != id );
+    const newProducts = products.filter(product => product.__id != id);
+    console.log(newProducts);
 
     if (isBrowser) {
       sessionStorage.setItem(SESSION_STORAGE, JSON.stringify(newProducts));
     }
   };
+
+  const deleteAllProducts = () => sessionStorage.removeItem(SESSION_STORAGE);
 
   const getTotalProducts = (): string => {
     const products = getProducts();
@@ -74,7 +74,8 @@ const ShoppingCartProvider = ({ children }: PropsWithChildren) => {
         deleteProduct,
         getTotalValue,
         getTotalProducts,
-        getShippingValue
+        getShippingValue,
+        deleteAllProducts
       }}
     >
       {children}

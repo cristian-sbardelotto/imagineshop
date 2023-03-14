@@ -10,10 +10,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 
 const ShoppingCart = () => {
-  const { getProducts, deleteProduct, getTotalValue, getTotalProducts, getShippingValue } =
-    useContext(ShoppingCartContext);
+  const {
+    getProducts,
+    deleteProduct,
+    getTotalValue,
+    getTotalProducts,
+    getShippingValue,
+    deleteAllProducts
+  } = useContext(ShoppingCartContext);
   const [products, setProducts] = useState<IProduct[]>([]);
   const [refresh, setRefresh] = useState<number>(0);
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
   useEffect(() => {
     const values = getProducts();
@@ -33,6 +41,12 @@ const ShoppingCart = () => {
     deleteProduct(id);
     setRefresh(oldValue => oldValue + 1);
   };
+
+  const handleDeleteAllProducts = () => {
+    deleteAllProducts();
+    setRefresh(oldValue => oldValue + 1);
+  };
+
 
   return products && products.length > 0 ? (
     <Main>
@@ -97,16 +111,28 @@ const ShoppingCart = () => {
 
             <InputGroup>
               <span>E-MAIL:</span>
-              <input type='text' />
+              <input
+                type='text'
+                value={email || ''}
+                onChange={e => setEmail(e.currentTarget.value)}
+              />
             </InputGroup>
 
             <InputGroup>
               <span>SENHA</span>
-              <input type='password' />
+              <input
+                type='password'
+                value={password || ''}
+                onChange={e => setPassword(e.currentTarget.value)}
+              />
             </InputGroup>
 
-            <Button>Continuar</Button>
+            <Button>
+              Continuar
+            </Button>
           </ShoppingCartPayment>
+
+          <button onClick={() => handleDeleteAllProducts()}>Excluir todos produtos</button>
         </section>
       </ShoppingCartContainer>
     </Main>
