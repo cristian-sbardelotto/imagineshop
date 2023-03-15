@@ -57,7 +57,7 @@ const ShoppingCartProvider = ({ children }: PropsWithChildren) => {
   const getTotalValue = (): string => {
     const products = getProducts();
     const total = products.reduce((acc, cur) => Number(acc) + Number(cur.price), 0);
-    return (new Intl.NumberFormat('pt-BR', { style: 'currency',currency: 'BRL', }).format(Number(total + ShippingValue)));
+    return (new Intl.NumberFormat('pt-BR', { style: 'currency',currency: 'BRL', }).format(Number(total) + Number(ShippingValue)));
   };
 
   const getShippingValue = (): string => {
