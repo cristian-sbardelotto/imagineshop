@@ -16,6 +16,8 @@ import { Container } from '@/styles/utils';
 import { IProduct } from '@/types';
 
 import { ShoppingCartContext } from '@/contexts/ShoppingCartContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 const ProductId = () => {
   const router = useRouter();
@@ -67,7 +69,10 @@ const ProductId = () => {
             </ProductSplitPrice>
 
             <Button onClick={() => addProductInShoppingCart(productData)}>
-              Adicionar ao carrinho
+              <div>
+                <FontAwesomeIcon icon={faCartShopping} size={'xl'} />
+                Adicionar ao carrinho
+              </div>
             </Button>
 
             <ProductDescription>{productData.description}</ProductDescription>
@@ -152,6 +157,12 @@ const Button = styled.button`
   border-radius: 4px;
 
   cursor: pointer;
+
+  div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 
   &:hover {
     filter: brightness(0.85);

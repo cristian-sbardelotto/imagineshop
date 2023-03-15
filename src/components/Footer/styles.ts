@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { Container } from '@/styles/utils';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const StyledFooter = styled.footer`
   height: 12.5rem;
@@ -36,4 +37,11 @@ export const SocialNetworksList = styled.ul`
   gap: 1.5rem;
 `;
 
+export const SocialNetworkIcon = styled(FontAwesomeIcon)`
+  color: ${({ theme }) => theme.colors.secondary};
+  font-size: 1.875rem;
 
+  &:hover {
+    filter: brightness(0.8);
+  }
+`;

@@ -5,14 +5,16 @@ import Link from 'next/link';
 import { MenuItem, MenuList, Navbar, StyledHeader } from './styles';
 
 import logo from '../../../public/images/logo.png';
-import shoppingCart from '../../../public/images/carrinho.png';
+import shoppingCart from '../../../public/images/carrinho.jpg';
 
 const Header = () => {
   return (
     <>
       <StyledHeader>
         <Navbar>
-          <Image src={logo} alt='Imagineshop Logo' width={200} height={100} />
+          <Link href="/">
+            <Image src={logo} alt='Imagineshop Logo' width={200} height={100} />
+          </Link>
           <MenuList>
             <MenuItem>
               <Link href='/'>Home</Link>
