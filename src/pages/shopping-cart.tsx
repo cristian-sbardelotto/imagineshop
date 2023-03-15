@@ -112,7 +112,7 @@ const ShoppingCart = () => {
 
             <Separator />
 
-            <LoginTitle></LoginTitle>
+            <LoginTitle>login</LoginTitle>
 
             <InputGroup>
               <span>E-MAIL:</span>
