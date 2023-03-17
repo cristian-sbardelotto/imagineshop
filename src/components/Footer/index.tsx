@@ -30,6 +30,7 @@ const Footer = () => {
               alt='ImagineSchool Logo'
               width={130}
               height={60}
+              priority
             />
           </Link>
         </div>
