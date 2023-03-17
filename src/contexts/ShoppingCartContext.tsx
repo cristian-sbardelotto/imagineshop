@@ -21,6 +21,9 @@ const ShoppingCartProvider = ({ children }: PropsWithChildren) => {
   const addProduct = (product: IProduct) => {
     const products = getProducts();
 
+    const productAlreadyExists = products.find(prod => prod.__id === product.__id);
+    if (productAlreadyExists) return;
+
     products.push(product);
 
     if (isBrowser) {
@@ -50,20 +53,34 @@ const ShoppingCartProvider = ({ children }: PropsWithChildren) => {
 
   const getTotalProducts = (): string => {
     const products = getProducts();
-    const total = products.reduce((acc, cur) => Number(acc) + Number(cur.price), 0);
-    return (new Intl.NumberFormat('pt-BR', { style: 'currency',currency: 'BRL', }).format(Number(total)));
+    const total = products.reduce(
+      (acc, cur) => Number(acc) + Number(cur.price),
+      0
+    );
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(Number(total));
   };
 
   const getTotalValue = (): string => {
     const products = getProducts();
-    const total = products.reduce((acc, cur) => Number(acc) + Number(cur.price), 0);
-    return (new Intl.NumberFormat('pt-BR', { style: 'currency',currency: 'BRL', }).format(Number(total) + Number(ShippingValue)));
+    const total = products.reduce(
+      (acc, cur) => Number(acc) + Number(cur.price),
+      0
+    );
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(Number(total) + Number(ShippingValue));
   };
 
   const getShippingValue = (): string => {
-    return (new Intl.NumberFormat('pt-BR', { style: 'currency',currency: 'BRL', }).format(Number(ShippingValue)));
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(Number(ShippingValue));
   };
-
 
   return (
     <ShoppingCartContext.Provider
@@ -74,7 +91,7 @@ const ShoppingCartProvider = ({ children }: PropsWithChildren) => {
         getTotalValue,
         getTotalProducts,
         getShippingValue,
-        deleteAllProducts
+        deleteAllProducts,
       }}
     >
       {children}
