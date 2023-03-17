@@ -3,16 +3,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebookSquare,
   faInstagram,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
-
-import styled from 'styled-components';
-
-
 
 import {
   Contact,
