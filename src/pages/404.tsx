@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { MessageContainer, SubTitle, Title } from './styles';
+import styled from 'styled-components';
+import { Container } from '@/styles/utils';
 
 const Error404 = () => {
   return (
@@ -12,5 +13,18 @@ const Error404 = () => {
     </MessageContainer>
   );
 };
+
+
+const MessageContainer = styled.div`
+  ${Container}
+`;
+
+const Title = styled.h1`
+  font-size: 3rem;
+`;
+
+const SubTitle = styled.h3`
+  font-size: 2rem;
+`;
 
 export default Error404;
