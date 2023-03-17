@@ -2,8 +2,6 @@ import styled from 'styled-components';
 import { Container } from '@/styles/utils';
 
 export const StyledHeader = styled.header`
-  width: 100vw;
-
   margin: 1.87rem 0 3.125rem 0;
 `;
 

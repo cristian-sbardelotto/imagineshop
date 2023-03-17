@@ -10,6 +10,7 @@
   "editor.formatOnSave": true,
   "editor.formatOnPaste": true,
   "files.autoSave": "afterDelay",
+  "editor.fontFamily": "'Fira Code', sans-serif",
 
   // explorer
   "explorer.compactFolders": false,
@@ -17,12 +18,11 @@
   // workbench
   "workbench.editor.enablePreview": false,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorTheme": "Absent Contrast (rainglow)",
 
   // prettier
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.enable": true,
-
 
   // terminal
   "terminal.integrated.fontSize": 18,
