@@ -43,7 +43,7 @@ The project simulates an e-commerce site, that can buy items from the store with
 > <h3>Firstly, you need to <strong>clone the project</strong> on your machine:</h3>
 > <br />
 
-<p align='center'><code>git clone https://github.com/cristian-sbardelotto/imagineshop-frontend</code></p>
+<p align='center'><code>git clone https://github.com/cristian-sbardelotto/imagineshop</code></p>
 
 <br />
 
